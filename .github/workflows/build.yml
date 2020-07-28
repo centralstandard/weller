@@ -1,0 +1,30 @@
+name: Build
+
+env:
+  node-version: 14.6.0
+  python-version: 3.8.5
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build font ttf, and woff files
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ env.node-version }}
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.python-version }}
+      - run: npm install
+      - run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: fonts
+          path: dist/ParkCentral.*

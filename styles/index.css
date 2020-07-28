@@ -1,0 +1,11 @@
+:root {
+  --park-central: 'Weller', sans-serif;
+}
+
+@font-face {
+  font-family: 'Weller';
+  font-stretch: 100%;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../dist/Weller.woff2') format('woff2-variations');
+}
